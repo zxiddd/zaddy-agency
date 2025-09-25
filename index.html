@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratchfy - All-in-One Restaurant Management System</title>
+    <meta name="description" content="Run your restaurant from one dashboard. QR ordering, POS billing, and customer loyalty in one app. No commissions, flat monthly fee.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>Scratchfy</h2>
+            </div>
+            <div class="nav-actions">
+                <div class="country-language-selector">
+                    <button class="selector-toggle" id="selectorToggle">
+                        <span class="flag" id="currentFlag">🇮🇳</span>
+                        <span class="country-lang" id="currentCountryLang">India - English</span>
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="selector-dropdown" id="selectorDropdown">
+                        <div class="search-container">
+                            <input type="text" class="country-search" id="countrySearch" placeholder="Search country...">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="country-list" id="countryList">
+                            <!-- Countries will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" data-key="nav-pricing">See Pricing</button>
+                <button class="btn btn-outline" data-key="nav-signin">Sign In</button>
+                <button class="btn btn-primary" data-key="nav-register">Register</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-key="hero-title">All-in-One POS + QR Ordering + Loyalty</h1>
+                <p class="hero-subtitle" data-key="hero-subtitle">Run your restaurant from one dashboard. Manage orders, print bills, reward customers – without heavy hardware.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" data-key="hero-trial">Start Free Trial</button>
+                    <button class="btn btn-outline btn-large" data-key="hero-pricing">See Pricing</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-mockup">
+                    <div class="mockup-screen">
+                        <div class="mockup-content">
+                            <div class="mockup-header"></div>
+                            <div class="mockup-body">
+                                <div class="mockup-item"></div>
+                                <div class="mockup-item"></div>
+                                <div class="mockup-item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-key="how-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <rect x="7" y="7" width="10" height="10" rx="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="step1-title">Customer Scans QR</h3>
+                    <p data-key="step1-desc">Customer scans QR code and sees your digital menu instantly</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="step2-title">Places Order</h3>
+                    <p data-key="step2-desc">Order is placed and instantly received by waiter and kitchen</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="step3-title">Digital Bill & Rewards</h3>
+                    <p data-key="step3-desc">Customer gets digital bill and optional scratch card discount</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Feature Boxes -->
+    <section class="animated-features">
+        <div class="container">
+            <h2 class="section-title animated-title">Our Core Solutions</h2>
+            <div class="animated-boxes-grid">
+                <article class="animated-box" data-animation="slide-up">
+                    <div class="box-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Scratchfy</h3>
+                    <p>Complete restaurant management platform with integrated solutions</p>
+                </article>
+                <article class="animated-box" data-animation="slide-up">
+                    <div class="box-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Ordering</h3>
+                    <p>Seamless digital ordering system for customers and staff</p>
+                </article>
+                <article class="animated-box" data-animation="slide-up">
+                    <div class="box-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <rect x="7" y="7" width="10" height="10" rx="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>QR Menu</h3>
+                    <p>Interactive digital menus accessible via QR code scanning</p>
+                </article>
+                <article class="animated-box" data-animation="slide-up">
+                    <div class="box-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Billing</h3>
+                    <p>Automated billing and payment processing with digital receipts</p>
+                </article>
+                <article class="animated-box" data-animation="slide-up">
+                    <div class="box-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.84 4.61A5.5 5.5 0 0 0 16.5 2.03A5.5 5.5 0 0 0 12 5.96A5.5 5.5 0 0 0 7.5 2.03A5.5 5.5 0 0 0 3.16 4.61C1.84 5.95 1.84 8.05 3.16 9.39L12 18.23L20.84 9.39C22.16 8.05 22.16 5.95 20.84 4.61Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Loyalty</h3>
+                    <p>Customer loyalty programs with rewards and retention features</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" data-key="features-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <rect x="7" y="7" width="10" height="10" rx="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature1-title">QR Menu + Ordering</h3>
+                    <p data-key="feature1-desc">Digital menu with instant ordering</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature2-title">POS & Billing</h3>
+                    <p data-key="feature2-desc">Generate bills and receipts instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature3-title">Kitchen Display</h3>
+                    <p data-key="feature3-desc">Real-time orders with audio alerts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature4-title">Separate Logins</h3>
+                    <p data-key="feature4-desc">Waiter & kitchen access controls</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature5-title">Customer Loyalty</h3>
+                    <p data-key="feature5-desc">Scratch cards, birthday reminders, discounts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2"/>
+                            <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature6-title">Analytics & Reports</h3>
+                    <p data-key="feature6-desc">Sales, customer data, performance insights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Scratchfy -->
+    <section class="comparison">
+        <div class="container">
+            <h2 class="section-title" data-key="why-title">Why Scratchfy?</h2>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comparison-other">
+                        <span class="cross-icon">✗</span>
+                        <span data-key="other1">Other apps: Menu only</span>
+                    </div>
+                    <div class="comparison-scratchfy">
+                        <span class="tick-icon">✓</span>
+                        <span data-key="scratchfy1">Scratchfy: POS + Ordering + Loyalty in one app</span>
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-other">
+                        <span class="cross-icon">✗</span>
+                        <span data-key="other2">Other apps: Complex setup</span>
+                    </div>
+                    <div class="comparison-scratchfy">
+                        <span class="tick-icon">✓</span>
+                        <span data-key="scratchfy2">Scratchfy: Runs on phone, tablet, or desktop</span>
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-other">
+                        <span class="cross-icon">✗</span>
+                        <span data-key="other3">Other apps: High commissions</span>
+                    </div>
+                    <div class="comparison-scratchfy">
+                        <span class="tick-icon">✓</span>
+                        <span data-key="scratchfy3">Scratchfy: Flat monthly fee, 0% commission</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="pricing-main-title">PRICING</h2>
+            
+            <!-- Billing Period Switch -->
+            <div class="billing-switch-container">
+                <div class="billing-switch">
+                    <button class="billing-option active" data-period="1">1 Month</button>
+                    <button class="billing-option" data-period="3">3 Months</button>
+                    <button class="billing-option" data-period="6">6 Months</button>
+                    <button class="billing-option" data-period="12">1 Year</button>
+                </div>
+            </div>
+            
+            <div class="pricing-grid" id="pricingGrid">
+                <!-- Pricing cards will be populated by JavaScript based on geo-detection -->
+            </div>
+            <p class="pricing-note" data-key="pricing-note">No setup fee. Cancel anytime. Auto-renewal available.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-key="testimonials-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p data-key="testimonial1">"Scratchfy helped us manage 40% more orders daily. The QR ordering system is a game-changer for our busy restaurant."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>RC</span>
+                        </div>
+                        <div class="author-info">
+                            <strong>Ahmed Al-Rashid</strong>
+                            <span>Owner, Riyadh Café</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p data-key="testimonial2">"We stopped paying high commissions to delivery apps. Now we own our customer data and relationships."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>BH</span>
+                        </div>
+                        <div class="author-info">
+                            <strong>Priya Sharma</strong>
+                            <span>Manager, Hyderabad Biryani House</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p data-key="testimonial3">"The loyalty program brought back 60% of our customers. Digital scratch cards are loved by everyone!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>MC</span>
+                        </div>
+                        <div class="author-info">
+                            <strong>Marco Giuseppe</strong>
+                            <span>Chef, Milano Café</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p data-key="testimonial4">"Setup was incredibly easy. Within 2 hours, we were taking QR orders and printing bills seamlessly."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>TK</span>
+                        </div>
+                        <div class="author-info">
+                            <strong>Tanaka Kenji</strong>
+                            <span>Owner, Tokyo Kitchen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2 data-key="cta-title">Ready to modernize your restaurant?</h2>
+            <button class="btn btn-primary btn-large" data-key="cta-button">Start Free Trial Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" data-key="footer-about">About Us</a>
+                    <a href="#" data-key="footer-contact">Contact</a>
+                    <a href="#" data-key="footer-privacy">Privacy Policy</a>
+                    <a href="#" data-key="footer-terms">Terms of Service</a>
+                </div>
+                <div class="footer-copyright">
+                    <p data-key="footer-copyright">© 2025 Scratchfy Technologies. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBhJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ",
+            authDomain: "scratchfy-app.firebaseapp.com",
+            projectId: "scratchfy-app",
+            storageBucket: "scratchfy-app.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdefghijklmnop"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Initialize Firestore
+        const db = firebase.firestore();
+        
+        // Make Firebase services available globally
+        window.firebase = firebase;
+        window.db = db;
+        window.firebaseDoc = firebase.firestore.doc;
+        window.firebaseCollection = firebase.firestore.collection;
+        window.firebaseOnSnapshot = firebase.firestore.onSnapshot;
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

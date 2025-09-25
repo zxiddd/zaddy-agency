@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Pricing Data - Scratchfy</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .setup-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #1f2937;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .description {
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .setup-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+        .setup-button:hover {
+            transform: translateY(-2px);
+        }
+        .setup-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .status {
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .pricing-preview {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .country-pricing {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .country-pricing:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .country-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="setup-container">
+        <h1>🔥 Setup Pricing Data</h1>
+        <p class="description">Initialize Firestore with dynamic pricing data for different countries and plans.</p>
+        
+        <div class="pricing-preview">
+            <h3>Pricing Structure to be Created:</h3>
+            
+            <div class="country-pricing">
+                <div class="country-name">🇮🇳 India (INR)</div>
+                <div class="price-row"><span>Monthly:</span><span>₹2,000</span></div>
+                <div class="price-row"><span>Quarterly:</span><span>₹1,800</span></div>
+                <div class="price-row"><span>Half-yearly:</span><span>₹1,500</span></div>
+                <div class="price-row"><span>Yearly:</span><span>₹1,200</span></div>
+            </div>
+            
+            <div class="country-pricing">
+                <div class="country-name">🇸🇦 Saudi Arabia (SAR)</div>
+                <div class="price-row"><span>Monthly:</span><span>ر.س300</span></div>
+                <div class="price-row"><span>Quarterly:</span><span>ر.س250</span></div>
+                <div class="price-row"><span>Half-yearly:</span><span>ر.س225</span></div>
+                <div class="price-row"><span>Yearly:</span><span>ر.س180</span></div>
+            </div>
+            
+            <div class="country-pricing">
+                <div class="country-name">🌍 Global (USD)</div>
+                <div class="price-row"><span>Monthly:</span><span>$80</span></div>
+                <div class="price-row"><span>Quarterly:</span><span>$70</span></div>
+                <div class="price-row"><span>Half-yearly:</span><span>$60</span></div>
+                <div class="price-row"><span>Yearly:</span><span>$40</span></div>
+            </div>
+        </div>
+        
+        <button class="setup-button" onclick="setupPricingData()">
+            Initialize Pricing Data in Firestore
+        </button>
+        
+        <div class="status" id="status"></div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyD6J4dTzMhOiC3V6FN_UqA8hA1LzYf36dU",
+          authDomain: "scratchfy-713a5.firebaseapp.com",
+          projectId: "scratchfy-713a5",
+          storageBucket: "scratchfy-713a5.firebasestorage.app",
+          messagingSenderId: "337844191268",
+          appId: "1:337844191268:web:6afa21589351782ba898b1",
+          measurementId: "G-VR1MVK8HZE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.firebaseDb = db;
+        window.firebaseSetDoc = setDoc;
+        window.firebaseDoc = doc;
+    </script>
+
+    <script>
+        async function setupPricingData() {
+            const button = document.querySelector('.setup-button');
+            const status = document.getElementById('status');
+            
+            button.disabled = true;
+            button.textContent = 'Setting up pricing data...';
+            status.style.display = 'none';
+            
+            try {
+                // Pricing data for different countries
+                const pricingData = {
+                    india: {
+                        country_name: "India",
+                        currency: "INR",
+                        currency_symbol: "₹",
+                        monthly_price: 2000,
+                        quarterly_price: 1800,
+                        halfyear_price: 1500,
+                        yearly_price: 1200,
+                        created_at: new Date(),
+                        updated_at: new Date()
+                    },
+                    saudi: {
+                        country_name: "Saudi Arabia",
+                        currency: "SAR",
+                        currency_symbol: "ر.س",
+                        monthly_price: 300,
+                        quarterly_price: 250,
+                        halfyear_price: 225,
+                        yearly_price: 180,
+                        created_at: new Date(),
+                        updated_at: new Date()
+                    },
+                    global: {
+                        country_name: "Global",
+                        currency: "USD",
+                        currency_symbol: "$",
+                        monthly_price: 80,
+                        quarterly_price: 70,
+                        halfyear_price: 60,
+                        yearly_price: 40,
+                        created_at: new Date(),
+                        updated_at: new Date()
+                    },
+                    us: {
+                        country_name: "United States",
+                        currency: "USD",
+                        currency_symbol: "$",
+                        monthly_price: 49,
+                        quarterly_price: 39,
+                        halfyear_price: 35,
+                        yearly_price: 29,
+                        created_at: new Date(),
+                        updated_at: new Date()
+                    },
+                    uk: {
+                        country_name: "United Kingdom",
+                        currency: "GBP",
+                        currency_symbol: "£",
+                        monthly_price: 39,
+                        quarterly_price: 31,
+                        halfyear_price: 28,
+                        yearly_price: 23,
+                        created_at: new Date(),
+                        updated_at: new Date()
+                    },
+                    uae: {
+                        country_name: "United Arab Emirates",
+                        currency: "AED",
+                        currency_symbol: "د.إ",
+                        monthly_price: 180,
+                        quarterly_price: 143,
+                        halfyear_price: 129,
+                        yearly_price: 107,
+                        created_at: new Date(),
+                        updated_at: new Date()
+                    }
+                };
+
+                // Create documents in Firestore
+                for (const [countryId, data] of Object.entries(pricingData)) {
+                    await window.firebaseSetDoc(
+                        window.firebaseDoc(window.firebaseDb, 'plans', countryId), 
+                        data
+                    );
+                }
+
+                // Success
+                status.className = 'status success';
+                status.style.display = 'block';
+                status.innerHTML = `
+                    <strong>✅ Success!</strong><br>
+                    Pricing data has been successfully created in Firestore.<br>
+                    Created ${Object.keys(pricingData).length} pricing documents in the 'plans' collection.
+                `;
+                
+                button.textContent = 'Pricing Data Initialized ✅';
+                
+            } catch (error) {
+                console.error('Error setting up pricing data:', error);
+                
+                status.className = 'status error';
+                status.style.display = 'block';
+                status.innerHTML = `
+                    <strong>❌ Error!</strong><br>
+                    Failed to setup pricing data: ${error.message}
+                `;
+                
+                button.disabled = false;
+                button.textContent = 'Retry Setup';
+            }
+        }
+    </script>
+</body>
+</html>

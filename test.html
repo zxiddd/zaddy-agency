@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Animated Boxes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .test-section {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .test-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .test-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .test-box p {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Page - Animated Boxes</h1>
+    <div class="test-section">
+        <div class="test-grid">
+            <article class="test-box">
+                <h3>Scratchfy</h3>
+                <p>Complete restaurant management platform with integrated solutions</p>
+            </article>
+            <article class="test-box">
+                <h3>Ordering</h3>
+                <p>Seamless digital ordering system for customers and staff</p>
+            </article>
+            <article class="test-box">
+                <h3>QR Menu</h3>
+                <p>Interactive digital menus accessible via QR code scanning</p>
+            </article>
+        </div>
+    </div>
+</body>
+</html>
