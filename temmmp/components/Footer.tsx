@@ -90,8 +90,8 @@ export default function Footer() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               {[
-                { name: 'LinkedIn', icon: Linkedin, color: 'neon-blue', href: 'https://linkedin.com/company/zaddy-agency' },
-                { name: 'Instagram', icon: Instagram, color: 'neon-purple', href: 'https://instagram.com/zaddy.agency' },
+                { name: 'LinkedIn', icon: Linkedin, color: 'neon-blue', href: 'https://www.linkedin.com/company/zaddyy/' },
+                { name: 'Instagram', icon: Instagram, color: 'neon-purple', href: 'https://www.instagram.com/zaddy.tech?igsh=MTBldDJvemI2OWxqMA%3D%3D&utm_source=qr' },
                 { name: 'GitHub', icon: Github, color: 'neon-green', href: 'https://github.com/zxiddd' }
               ].map((social) => {
                 const IconComponent = social.icon

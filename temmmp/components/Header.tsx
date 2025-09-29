@@ -21,7 +21,7 @@ export default function Header() {
     { name: 'Home', href: '/', type: 'link' },
     { name: 'Services', href: '/#services', type: 'scroll' },
     { name: 'Portfolio', href: '/portfolio', type: 'link' },
-    { name: 'Projects', href: '/#projects', type: 'scroll' },
+    { name: 'Career', href: '/career', type: 'link' },
     { name: 'About', href: '/#about', type: 'scroll' },
     { name: 'Contact', href: '/#contact', type: 'scroll' }
   ]
@@ -80,7 +80,7 @@ export default function Header() {
               {navItems.map((item, index) => (
                 item.type === 'link' ? (
                   <Link key={item.name} href={item.href}>
-                    <motion.div
+                    <motion.span
                       className="text-gray-300 hover:text-white transition-colors duration-200 font-medium cursor-pointer relative group"
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function Header() {
                     >
                       {item.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-neon-blue to-neon-green transition-all duration-300 group-hover:w-full"></span>
-                    </motion.div>
+                    </motion.span>
                   </Link>
                 ) : (
                   <motion.button
@@ -144,7 +144,7 @@ export default function Header() {
                 {navItems.map((item, index) => (
                   item.type === 'link' ? (
                     <Link key={item.name} href={item.href}>
-                      <motion.div
+                      <motion.span
                         className="block text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2 cursor-pointer"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -152,7 +152,7 @@ export default function Header() {
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
-                      </motion.div>
+                      </motion.span>
                     </Link>
                   ) : (
                     <motion.button
