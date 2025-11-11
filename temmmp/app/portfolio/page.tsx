@@ -148,7 +148,7 @@ const portfolioData = {
     },
     {
       id: 13,
-      title: 'Charcoal Station – Restaurant Website',
+      title: 'Charcoal – Restaurant Website',
       description: 'Modern restaurant website with interactive menu, table reservations, and online ordering system. Built with Next.js + Tailwind CSS for optimal performance.',
       tags: ['Next.js', 'Tailwind', 'Restaurant'],
       category: 'Web & Freelance',
@@ -170,14 +170,14 @@ const portfolioData = {
     },
     {
       id: 15,
-      title: 'Shawafel Restaurant Chain – Multi-location Website',
+      title: 'persian darbar Pune Restaurant Chain – Multi-location Website',
       description: 'Multi-location restaurant website with franchise information, location-specific menus, and contact forms. SEO optimized for local search visibility.',
       tags: ['Multi-location', 'SEO', 'Franchise'],
       category: 'Web & Freelance',
       icon: <Users className="w-6 h-6" />,
       highlight: 'Multi-location',
       color: 'neon-green',
-      projectUrl: 'https://shawafel.com'
+      projectUrl: 'https://persiandarbar.com'
     },
     {
       id: 16,
